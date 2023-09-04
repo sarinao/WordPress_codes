@@ -151,3 +151,57 @@ $('.as-slider').each(function(){
 })
 
 </script>
+
+
+
+
+
+/////
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+var $ = jQuery
+
+$(window).on('load scroll resize', function(){
+
+$('.mdw-card-portfolio').each(function(){
+    var $this = $(this),
+    sectionHeight = $this.outerHeight(),
+    windowHeight = $(window).height(),
+    scrollValue = $(window).scrollTop() - $this.offset().top + windowHeight,
+    bottomPassValue = $(window).scrollTop() - $this.offset().top - sectionHeight,
+    easeSpeed = 3,
+    easeValue
+    
+    if( $(window).width() > 767 ){
+        
+        if(scrollValue < 0 || bottomPassValue > 0) return
+        
+        easeValue = 1 - 1/Math.pow(2, scrollValue*easeSpeed/sectionHeight)
+        
+        $this.find('.mdw-card-portfolio-image-left').css('transform', 'translateX(calc(' + (-1*easeValue) + '* var(--maximum-move))) rotate(calc(' + (-1*easeValue) + '*var(--maximum-rotate)))')
+        $this.find('.mdw-card-portfolio-image-right').css('transform', 'translateX(calc(' + (1*easeValue) + '* var(--maximum-move))) rotate(calc(' + (1*easeValue) + '*var(--maximum-rotate)))')
+    }else{
+        $this.removeClass('passed')
+        if( scrollValue - windowHeight*1/2 > 0 ) $this.addClass('passed')
+    }
+    
+})
+})
+
+$(document).ready(function(){
+    
+$('.mdw-email-box .elementor-widget-container').hover(function(){
+    $('.mdw-email-copy').addClass('copy')
+}, function(){
+    $('.mdw-email-copy').removeClass('copy copied')
+})
+
+$('.mdw-email-box .elementor-widget-container').on('click', function(){
+    navigator.clipboard.writeText($('.mdw-email-box').text())
+    $('.mdw-email-copy').addClass('copied')
+})
+})
+
+</script>
