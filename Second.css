@@ -1,0 +1,141 @@
+<style>
+.mdw-card-portfolio{
+    --image-height: 77vh;
+    --image-width: 62vh;
+    --maximum-move: 80vh;
+    --maximum-rotate: 6deg;
+}
+.mdw-gradient{
+    --gradient-color-1: #302a27;
+    --gradient-color-2: #965f39;
+    --gradient-color-3: #e1a57d;
+    --gradient-color-4: #afd3ec;
+    --gradient-color-5: #445f88;
+}
+
+/* Tablet Device */
+
+@media (max-width: 1024px){
+.mdw-card-portfolio{
+    --image-height: 77vh;
+    --image-width: 62vh;
+    --maximum-move: 65vh;
+    --maximum-rotate: 6deg;
+}
+}
+
+
+/* Mobile Device */
+
+@media (max-width: 767px){
+.mdw-card-portfolio{
+    --image-height: 450px;
+    --image-width: 375px;
+    --maximum-move: 350px;
+    --maximum-rotate: 3deg;
+}
+}
+
+html, body{
+    overflow-x: hidden;
+}
+.elementor-edit-area .animated {
+    animation-fill-mode: forwards!important;
+}
+.mdw-card-portfolio-image-left,
+.mdw-card-portfolio-image-right{
+    will-change: transform;
+}
+.mdw-card-portfolio-image-left img,
+.mdw-card-portfolio-image-right img{
+    width: var(--image-width);
+    height: var(--image-height);
+    object-fit: cover;
+}
+
+
+/* CSS code for gradient background */
+
+.mdw-gradient .elementor-widget-container{
+    background: var(--gradient-color-1,#fff);
+    background: linear-gradient(90deg, var(--gradient-color-1,#fff) 0%, var(--gradient-color-2,#fff) 25%, var(--gradient-color-3,#fff) 50%, var(--gradient-color-4,#fff) 75%, var(--gradient-color-5,#fff) 100%);
+}
+.mdw-gradient.elementor-widget-heading .elementor-widget-container{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* CSS code for bottom email box */
+
+.mdw-email-box .elementor-widget-container{
+    cursor: pointer;
+}
+.mdw-email-box .elementor-heading-title{
+    transition: all 0.2s ease-in-out;
+    word-break: break-all;
+    text-align: center;
+}
+.mdw-email-box .elementor-widget-container:hover .elementor-heading-title{
+    transform: scale(0.98);
+}
+.mdw-email-copy{
+    height: var(--min-height,22px);
+}
+.mdw-email-copy .e-con-inner{
+    height: auto;
+}
+.mdw-email-copy .elementor-widget{
+    transition: all 0.2s ease-in-out;
+}
+.mdw-email-copy.copy .elementor-widget{
+    transform: translateY(-100%);
+}
+.mdw-email-copy.copied .elementor-widget{
+    transform: translateY(-200%);
+}
+
+
+/* CSS code for improving entrance animation */
+
+.fadeInUp {
+    animation: mdwFadeInUp 1s ease-in-out forwards !important;
+}
+.fadeIn {
+    animation: fadeIn 1.3s ease-in-out 0.5s forwards !important;
+    opacity: 0;
+}
+
+@keyframes mdwFadeInUp{
+0%{
+    transform: translateY(50px);
+    opacity: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+100%{
+    transform: translateY(0);
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+}
+
+@media (max-width: 767px){
+.mdw-card-portfolio-image-left{
+    transition: all 0.6s ease-in-out;
+    transform: translateX(-30px) rotate(-1deg) !important;
+}
+.mdw-card-portfolio-image-right{
+    transition: all 0.6s ease-in-out;
+    transform: translateX(30px) rotate(1deg) !important;
+}
+.mdw-card-portfolio.passed .mdw-card-portfolio-image-left{
+    transition: all 0.8s ease-in-out;
+    transform: translateX(calc(-1*var(--maximum-move))) rotate(calc(-1*var(--maximum-rotate))) !important;
+}
+.mdw-card-portfolio.passed .mdw-card-portfolio-image-right{
+    transition: all 0.8s ease-in-out;
+    transform: translateX(calc(1*var(--maximum-move))) rotate(calc(1*var(--maximum-rotate))) !important;
+}
+}
+
+</style>
