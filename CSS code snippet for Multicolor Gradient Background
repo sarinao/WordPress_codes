@@ -1,0 +1,3 @@
+selector{
+    background: linear-gradient(130deg,#ff7a18,#af002d 41%,#319197 76%);
+}
